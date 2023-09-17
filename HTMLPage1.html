@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>random food website</title>
+</head>
+
+<body>
+    <image src="Random.JPG"width="1400"></image>
+    <button>เมนูอาหาร!</button> 
+    <label>
+        <b>พิมพ์ชื่ออาหารที่ต้องการสุ่มทีละบรรทัด:</b>
+        <textarea id="random-items"></textarea>
+    </label>
+
+    <button id="random-button">Random</button>
+
+    <div id="winner">
+        <div>The Winner</div>
+        <div id="winner-value">FleshySloth</div>
+   
+    </div>
+
+    <style>
+        body {
+            padding: 20px;
+        }
+
+        label > b {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        label > textarea {
+            width: 100%;
+            height: 100px;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            margin: 5px auto;
+            padding: 10px;
+            border: none;
+            border-radius: 20px;
+            color: white;
+            background: #2BE4B3;
+            cursor: pointer;
+        }
+
+        #winner {
+            font-size: 20px;
+            text-align: center;
+            border: 3px dashed #2BE4B3;
+            margin: 20px auto 0;
+            padding: 20px;
+            display: none;
+        }
+
+            #winner > #winner-value {
+                font-size: 50px;
+                font-weight: bold;
+            }
+
+    </style>
+
+    <script>
+        const itemsEl = document.getElementById('random-items')
+        const buttonEl = document.getElementById('random-button')
+        const winnerBoxEl = document.getElementById('winner')
+        const winnerValueEl = document.getElementById('winner-value')
+
+        buttonEl.addEventListener('click', () => {
+            const items = itemsEl.value.split('\n')
+            const winner = items[
+                Math.floor(Math.random() * items.length)
+            ]
+
+            if (winner) {
+                winnerValueEl.textContent = winner
+                winnerBoxEl.style.display = 'block'
+            }
+        })
+
+    </script>
+
+
+
+</body>
+
+</html>
